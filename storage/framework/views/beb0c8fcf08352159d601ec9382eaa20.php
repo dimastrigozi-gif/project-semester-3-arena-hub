@@ -21,9 +21,9 @@
                     <a href="<?php echo e(route('cari-turnamen')); ?>" class="bg-cyan-600 text-white px-4 py-2 rounded-md hover:bg-cyan-700 text-center">
                         Cari Turnamen
                     </a>
-                    <a href="<?php echo e(route('signup')); ?>" class="bg-gray-700 text-gray-200 border border-gray-600 px-4 py-2 rounded-md hover:bg-gray-600 text-center">
+                    <button type="button" onclick="alert('Fitur Buat Turnamen masih dalam pengembangan')" class="bg-gray-700 text-gray-200 border border-gray-600 px-4 py-2 rounded-md hover:bg-gray-600 text-center">
                         Buat Turnamen
-                    </a>
+                    </button>
                 </div>
             </div>
         </div>
