@@ -2,7 +2,7 @@
 
 return [
 
-    // Biar React di port 5173 boleh ambil data dari Laravel
+    // Atur izin akses buat endpoint API
     'paths' => ['api/*'],
 
     'allowed_methods' => ['*'],

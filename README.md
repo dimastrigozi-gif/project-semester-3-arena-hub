@@ -1,44 +1,47 @@
-# ArenaHub Backend
+# ArenaHub
 
-Backend untuk aplikasi ArenaHub, dipakai untuk mengelola data turnamen game (Mobile Legends, Free Fire, eFootball, Point Blank). Dibuat dengan Laravel sebagai API dan React (Vite) untuk tampilannya.
+Website turnamen esport sederhana untuk tugas mata kuliah Pemrograman Web Lanjut. Dibuat dengan Laravel, PHP, dan Blade. Tampilan memakai Tailwind CSS lewat CDN, jadi tidak perlu install npm.
 
 ## Teknologi
 
 - Laravel 13 + PHP 8.3
-- SQLite (bawaan, bisa diganti lewat `.env`)
-- React 18 + Vite + Tailwind CSS
+- Blade
+- Tailwind CSS CDN
+- MySQL
 
 ## Cara Menjalankan
 
 ```bash
 composer install
-cp .env.example .env
+copy .env.example .env
 php artisan key:generate
-php artisan migrate --seed
-npm install
-npm run build
+php artisan migrate
 php artisan serve
 ```
 
-Kalau mau mode development frontend, jalankan `npm run dev` di terminal terpisah.
+Buka `http://127.0.0.1:8000`.
 
-## Endpoint API
+## Halaman
 
-| Method | URL | Keterangan |
-| --- | --- | --- |
-| GET | `/api/tournaments` | Ambil semua turnamen |
-| GET | `/api/tournaments/{id}` | Detail satu turnamen |
-| POST | `/api/tournaments` | Tambah turnamen baru |
-| POST | `/api/tournaments/{id}/register` | Daftarkan tim ke turnamen |
+- `/` - home
+- `/cari-turnamen` - cari turnamen
+- `/turnamen/{id}` - detail turnamen
+- `/turnamen/{id}/daftar` - pendaftaran
+- `/turnamen/{id}/bayar` - pembayaran
+- `/jadwal` - jadwal
+- `/tentang` - tentang
+- `/signin` dan `/signup` - auth sederhana
+- `/organizer/dashboard` - dashboard organizer
 
-## Struktur Singkat
+## Struktur
 
-- `app/Modules/Tournaments` - model dan controller turnamen
-- `routes/api.php` - daftar endpoint API
-- `database/migrations` - tabel turnamen dan tim
-- `database/seeders` - data contoh turnamen
-- `resources/js` - halaman React
+- `app/Http/Controllers/PageController.php` - halaman publik
+- `app/Http/Controllers/OrganizerController.php` - halaman organizer
+- `app/Models/Tournament.php` - model turnamen
+- `resources/views/layouts/app.blade.php` - layout utama
+- `resources/views/pages` - halaman Blade
+- `routes/web.php` - routing halaman
 
 ## Catatan
 
-Data contoh turnamen bisa diisi ulang dengan `php artisan db:seed --class=TournamentSeeder`.
+Project ini masih setengah jadi. Login memakai session sederhana, data turnamen di halaman publik masih dummy, dan pendaftaran/pembayaran belum tersambung ke database.

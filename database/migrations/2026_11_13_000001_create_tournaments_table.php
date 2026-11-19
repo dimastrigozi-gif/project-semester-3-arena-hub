@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    // Bikin tabel turnamen
+    // tabel turnamen, field nya masih basic
     public function up(): void
     {
         Schema::create('tournaments', function (Blueprint $table) {
@@ -16,11 +16,12 @@ return new class extends Migration
             $table->integer('quota');
             $table->integer('price');
             $table->date('start_date');
+            $table->string('status')->default('upcoming');
             $table->timestamps();
         });
     }
 
-    // Hapus tabel kalau migration di-rollback
+    // hapus tabel kalau migrate rollback
     public function down(): void
     {
         Schema::dropIfExists('tournaments');
